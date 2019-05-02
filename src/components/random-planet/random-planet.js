@@ -29,16 +29,21 @@ export default class RandomPlanet extends Component {
 	}
 
 	render() {
-		console.log(this.state);
-
-		const { planet: { name, population,
-			rotation_period: rotationPeriod, diameter } } = this.state;
+		const {
+			planet: {
+				id,
+				name,
+				population,
+				rotation_period: rotationPeriod,
+				diameter
+			}
+		} = this.state;
 		
 
 		return (
 			<div className="random-planet jumbotron rounded">
 				<img className="planet-image"
-					src={`https://starwars-visualguide.com/assets/img/planets/${this.planetId}.jpg`}
+					src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
 					alt=""/>
 				<div>
 					<h4>{name}</h4>
