@@ -14,31 +14,31 @@ export default class RandomPlanet extends Component {
 
 	constructor() {
 		super();
-		this.updatePlanet();
+		this.planetId = Math.floor(Math.random() * 18) + 2;
+		this.updatePlanet(this.planetId);
 	}
 
 	onPlanetLoaded = (planet) => {
 		this.setState({ planet });
 	};
 
-	updatePlanet() {
-		const id = 12;
+	updatePlanet(id) {
 		this.swapiService
 			.getPlanet(id)
 			.then(this.onPlanetLoaded);
 	}
 
 	render() {
+		console.log(this.state);
 
-		const { planet: { id, name, population,
-			rotationPeriod, diameter } } = this.state;
+		const { planet: { name, population,
+			rotation_period: rotationPeriod, diameter } } = this.state;
 		
-		console.log(id);
 
 		return (
 			<div className="random-planet jumbotron rounded">
 				<img className="planet-image"
-					src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+					src={`https://starwars-visualguide.com/assets/img/planets/${this.planetId}.jpg`}
 					alt=""/>
 				<div>
 					<h4>{name}</h4>
