@@ -92,8 +92,8 @@ export default class SwapiService {
 		const {
 			name,
 			gender,
-			birthYear,
-			eyeColor,
+			birth_year: birthYear,
+			eye_color: eyeColor,
 		} = person;
 
 		return {
