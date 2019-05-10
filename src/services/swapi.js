@@ -48,7 +48,7 @@ export default class SwapiService {
 		return object.url.match(idRegExp)[ 1 ];
 	}
 
-	_transformPlanet(planet) {
+	_transformPlanet = (planet) => {
 		const {
 			name,
 			population,
@@ -65,7 +65,7 @@ export default class SwapiService {
 		}
 	}
 
-	_transformStartship(starship) {
+	_transformStartship = (starship) => {
 		const {
 			name,
 			model,
@@ -88,7 +88,7 @@ export default class SwapiService {
 		};
 	}
 
-	_transformPerson(person) {
+	_transformPerson = (person) => {
 		const {
 			name,
 			gender,
