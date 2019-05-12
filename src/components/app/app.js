@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Header from '../header';
 import RandomPlanet from '../random-planet';
 import ItemList from '../item-list';
-import PersonDetails from '../person-details';
+import ItemDetails from '../item-details';
 import SwapiService from '../../services/swapi';
 
 import './app.css';
@@ -12,17 +12,16 @@ export default class App extends Component {
 	swapiService = new SwapiService();
 
 	state = {
-		selectedPerson: 5,
+		selectedItemId: 5,
 	}
 
 	onPersonSelected = (id) => {
 		this.setState({
-			selectedPerson: id
+			selectedItemId: id
 		});
 	}
 
 	render() {
-		console.log(this.swapiService.getAllPeople);
 
 		return (
 			<div className="stardb-app">
@@ -33,10 +32,13 @@ export default class App extends Component {
 					<div className="col-md-6">
 						<ItemList
 							onItemSelected={this.onPersonSelected}
-							getData={this.swapiService.getAllPeople}/>
+							getData={this.swapiService.getAllPeople}
+							renderItem={(item) => `${item.name} (${item.gender}, ${item.birthYear})`}/>
 					</div>
 					<div className="col-md-6">
-						<PersonDetails personId={this.state.selectedPerson}/>
+						<ItemDetails
+							itemId={this.state.selectedItemId}
+							getData={this.swapiService.getPerson}/>
 					</div>
 				</div>
 			</div>
