@@ -5,6 +5,7 @@ import RandomPlanet from '../random-planet';
 import ItemList from '../item-list';
 import ItemDetails from '../item-details';
 import SwapiService from '../../services/swapi';
+import PeoplePage from '../people-page';
 
 import './app.css';
 
@@ -27,20 +28,7 @@ export default class App extends Component {
 			<div className="stardb-app">
 				<Header />
 				<RandomPlanet />
-	
-				<div className="row mb2">
-					<div className="col-md-6">
-						<ItemList
-							onItemSelected={this.onPersonSelected}
-							getData={this.swapiService.getAllPeople}
-							renderItem={(item) => `${item.name} (${item.gender}, ${item.birthYear})`}/>
-					</div>
-					<div className="col-md-6">
-						<ItemDetails
-							itemId={this.state.selectedItemId}
-							getData={this.swapiService.getPerson}/>
-					</div>
-				</div>
+				<PeoplePage />
 			</div>
 		);
 	}
