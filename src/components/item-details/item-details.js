@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './item-details.css';
 import Spinner from '../spinner';
-import PersonInfo from './person-info';
+import ItemInfo from './item-info';
 
 export default class ItemDetails extends Component {
 
@@ -36,10 +36,11 @@ export default class ItemDetails extends Component {
 
 	render() {
 		const { item } = this.state;
+		const { type } = this.props;
 
 		return (
 			<div className="person-details card">
-				{item ? <PersonInfo person={item} /> : <Spinner />}
+				{item ? <ItemInfo info={item} type={type} /> : <Spinner />}
 			</div>
 		)
 	}
